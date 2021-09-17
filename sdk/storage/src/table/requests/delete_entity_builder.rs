@@ -75,6 +75,8 @@ impl<'a> DeleteEntityBuilder<'a> {
             .method(Method::DELETE)
             .uri(url.as_str());
         let request = add_optional_header(&self.client_request_id, request);
+        let request = request.header("Accept", "application/json;odata=fullmetadata");
+        let request = request.header("Content-Type", "application/json");
 
         let request = request.body(serde_json::to_string(entity)?)?;
 
