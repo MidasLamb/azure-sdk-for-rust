@@ -78,8 +78,6 @@ impl<'a> DeleteEntityBuilder<'a> {
         let request = request.header("Accept", "application/json;odata=fullmetadata");
         let request = request.header("Content-Type", "application/json");
 
-        let request = request.body(serde_json::to_string(entity)?)?;
-
         Ok(TransactionOperation::new(request))
     }
 }
